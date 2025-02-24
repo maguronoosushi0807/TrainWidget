@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.toml": "bat",
+        "xstring": "cpp",
+        "string": "cpp"
+    }
+}
