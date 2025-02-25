@@ -16,6 +16,12 @@ struct schedule_t{
     int min = 0;
     bool is_rapid = false;
 };
+struct train_time_t{
+    int leave_h  = 0, leave_m  = 0;
+    int arrive_h = 0, arrive_m = 0;
+    int duration = 0;
+    bool is_rapid = false;
+};
 
 vector<string> split(string& input, char delimiter);
 
@@ -87,6 +93,7 @@ int main(){
 
 
     // search
+    vector<train_time_t> train_times;
     bool is_searched = false;
     for(int k=0;k<schedule.size();k++){
         is_searched = false;
@@ -94,11 +101,26 @@ int main(){
             for(int i=0;i<MAX_MINS;i++){
                 if(schedule[k][j][i].hour * 100 + schedule[k][j][i].min >= input_hour * 100 + input_min){
                     // cout << schedule[k][j][i].hour << ":" << schedule[k][j][i].min << endl;
-                    schedule_t s;
-                    s.hour     = schedule[k][j][i].hour;
-                    s.min      = schedule[k][j][i].min;
+                    train_time_t s;
+                    s.leave_h  = schedule[k][j][i].hour;
+                    s.leave_m  = schedule[k][j][i].min;
                     s.is_rapid = schedule[k][j][i].is_rapid;
-                    depart.push_back(s);
+                    if(schedule[k] == ItW || schedule[k] == WtI){
+                        if(s.is_rapid){
+                            s.duration = 15;
+                        }else{
+                            s.duration = 22;
+                        }
+                    }else{
+                        s.duration = 3;
+                    }
+                    s.arrive_m = s.leave_m + s.duration;
+                    if(s.arrive_m >= 60){
+                        s.arrive_m -= 60;
+                        s.arrive_h = s.leave_h + 1;
+                    }
+                    
+                    train_times.push_back(s);
 
                     is_searched = true;
                     break;
@@ -109,7 +131,7 @@ int main(){
     }
     if(!is_searched)    cout << "no train!w";
 
-    for(auto s:depart) cout << s.hour << ":" << s.min << " " << s.is_rapid << endl;
+    for(auto s:train_times) cout << s.leave_h << ":" << s.leave_m << "  ----  " << s.arrive_h << ":" << s.arrive_m << " (" << s.duration << "min) is_rapid" << s.is_rapid << endl;
 
 
 
