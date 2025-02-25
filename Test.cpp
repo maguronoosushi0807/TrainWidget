@@ -84,11 +84,10 @@ int main(){
     }
     // for(auto s:schedule) load_test(s);
 
-
     vector<schedule_t> depart;
     int input_hour = stoi(time.substr(0,2));
     int input_min = stoi(time.substr(3,2));
-    cout << "hour:" << input_hour << " min:" << input_min << endl;
+    // cout << "hour:" << input_hour << " min:" << input_min << endl;
 
 
 
@@ -114,13 +113,17 @@ int main(){
                     }else{
                         s.duration = 3;
                     }
+                    s.arrive_h = s.leave_h;
                     s.arrive_m = s.leave_m + s.duration;
                     if(s.arrive_m >= 60){
                         s.arrive_m -= 60;
-                        s.arrive_h = s.leave_h + 1;
+                        s.arrive_h++;
                     }
                     
                     train_times.push_back(s);
+
+                    input_hour = s.arrive_h;
+                    input_min  = s.arrive_m;
 
                     is_searched = true;
                     break;
@@ -131,7 +134,34 @@ int main(){
     }
     if(!is_searched)    cout << "no train!w";
 
-    for(auto s:train_times) cout << s.leave_h << ":" << s.leave_m << "  ----  " << s.arrive_h << ":" << s.arrive_m << " (" << s.duration << "min) is_rapid" << s.is_rapid << endl;
+
+
+    // statistic
+    for(auto s:train_times) cout << s.leave_h << ":" << s.leave_m << "  ----  " << s.arrive_h << ":" << s.arrive_m << " (" << s.duration << "min) is_rapid:" << s.is_rapid << endl;
+
+    schedule_t leave;
+    leave.hour = train_times.at(0).leave_h;
+    leave.min  = train_times.at(0).leave_m;
+    int l = leave.hour * 60 + leave.min;
+
+    schedule_t arrive;
+    arrive.hour = train_times.at(train_times.size()-1).arrive_h;
+    arrive.min  = train_times.at(train_times.size()-1).arrive_m;
+    int a = arrive.hour * 60 + arrive.min;
+
+
+
+    int riding_time = 0;
+    cout << endl << "================================================================" << endl ;
+    for(int i=0;i<train_times.size();i++){
+        if(i != 0) cout << "  --------  ";
+        train_time_t t = train_times[i];
+        riding_time += t.duration;
+        cout << t.leave_h << ":" << t.leave_m << " -- " << t.arrive_h << ":" << t.arrive_m;
+    }
+    int waiting_time = a - l - riding_time;
+    cout << endl << "riding:" << riding_time << " waiting:" << waiting_time << " (" << waiting_time * 100 / (riding_time + waiting_time) << "%)" << endl;
+    cout << "================================================================" << endl << endl;
 
 
 
