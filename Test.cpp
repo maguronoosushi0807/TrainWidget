@@ -27,6 +27,7 @@ void load_test(schedule_t schedule[][MAX_MINS]);
 
 
 int main(){
+    // load
     schedule_t ItW[MAX_HOURS][MAX_MINS] = {};
     schedule_t WtI[MAX_HOURS][MAX_MINS] = {};
     schedule_t MtW[MAX_HOURS][MAX_MINS] = {};
@@ -39,27 +40,76 @@ int main(){
 
 
 
+    // input
     char location = 'i', destiny = 'w';
     string time = "";
 
-    cout << "Where r u?" << endl << "< ";
+    cout << "Where r u? (1 character)" << endl << "< ";
     cin >> location;
-    cout << "Where r u goint to?" << endl << "< ";
+    cout << "Where r u goint to? (1 character)" << endl << "< ";
     cin >> destiny;
-    cout << "What time is it now?" << endl << "< ";
+    cout << "What time is it now? (xx:xx)" << endl << "< ";
     cin >> time;
-
-    schedule_t (*schedule)[MAX_MINS] = nullptr;
-    if(location == 'i' && destiny == 'w')       schedule = ItW;
-    else if(location == 'w' && destiny == 'i')  schedule = WtI;
-    else if(location == 'm' && destiny == 'w')  schedule = MtW;
-    else if(location == 'w' && destiny == 'm')  schedule = WtM;
-    else{
+    if((location != 'i' && location != 'w' && location != 'm') || (destiny != 'i' && destiny != 'w' && destiny != 'm')){
         cout << "invalid input" << endl;
         return -1;
     }
 
-    load_test(schedule);
+
+
+    // convert
+    vector<schedule_t(*)[MAX_MINS]>schedule;
+    if(location == 'i'){
+        schedule.emplace_back(ItW);
+        if(destiny == 'm'){
+            schedule.emplace_back(WtM);
+        }
+    }else if(location == 'w'){
+        if(destiny == 'i'){
+            schedule.emplace_back(WtM);
+        }else if(destiny == 'm'){
+            schedule.emplace_back(WtM);
+        }
+    }else if(location == 'm'){
+        schedule.emplace_back(MtW);
+        if(destiny == 'i'){
+            schedule.emplace_back(WtI);
+        }
+    }
+    // for(auto s:schedule) load_test(s);
+
+
+    vector<schedule_t> depart;
+    int input_hour = stoi(time.substr(0,2));
+    int input_min = stoi(time.substr(3,2));
+    cout << "hour:" << input_hour << " min:" << input_min << endl;
+
+
+
+    // search
+    bool is_searched = false;
+    for(int k=0;k<schedule.size();k++){
+        is_searched = false;
+        for(int j=0;j<MAX_HOURS;j++){
+            for(int i=0;i<MAX_MINS;i++){
+                if(schedule[k][j][i].hour * 100 + schedule[k][j][i].min >= input_hour * 100 + input_min){
+                    // cout << schedule[k][j][i].hour << ":" << schedule[k][j][i].min << endl;
+                    schedule_t s;
+                    s.hour     = schedule[k][j][i].hour;
+                    s.min      = schedule[k][j][i].min;
+                    s.is_rapid = schedule[k][j][i].is_rapid;
+                    depart.push_back(s);
+
+                    is_searched = true;
+                    break;
+                }
+            }
+            if(is_searched) break;
+        }
+    }
+    if(!is_searched)    cout << "no train!w";
+
+    for(auto s:depart) cout << s.hour << ":" << s.min << " " << s.is_rapid << endl;
 
 
 
