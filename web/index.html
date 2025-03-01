@@ -12,8 +12,8 @@
       <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Noto+Sans+JP:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> 
 
       <!-- css -->
-      <link href="reset.css" rel="stylesheet">
-      <link href="style.css" rel="stylesheet">
+      <link href="asset/reset.css" rel="stylesheet">
+      <link href="asset/style.css" rel="stylesheet">
   </head>
   <body>
     <!-- ヘッダー -->
@@ -21,7 +21,10 @@
       <!-- <button onclick="changeContent()"></button> -->
       <h1 onclick="changeLocation()" id="locations">Iwade to Miyamae</h1>
     </div>
-
+    
+    <div class="locations">
+      <h1 onclick="load()">update</h1>
+    </div>
 
 
     <div onclick="update()">
@@ -134,8 +137,9 @@
           <div class="miyamae" id="miyamae-4"></div>
         </div>
       </div>
+
     </div>
 
-    <script src="script.js"></script>
+    <script src="asset/script.js"></script>
   </body>
 </html>
