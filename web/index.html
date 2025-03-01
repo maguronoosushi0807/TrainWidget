@@ -17,8 +17,9 @@
   </head>
   <body>
     <!-- ヘッダー -->
-    <div class="header">
-      <h1>Iwade to Miyamae</h1>
+    <div class="locations" id="locations">
+      <!-- <button onclick="changeContent()"></button> -->
+      <h1 onclick="changeLocation()">Iwade to Miyamae</h1>
     </div>
 
 
@@ -28,7 +29,7 @@
       <div class="information">
         <div class="time">
           <div class="leave">
-            <p>7:51</p>
+            <p id="item1">7:51</p>
           </div>
           <div class="arrow">
             <p>→</p>
@@ -51,34 +52,7 @@
     </div>
 
     
-    <!-- 1個目 -->
-    <div class="train-001">
-      <div class="information">
-        <div class="time">
-          <div class="leave">
-            <p>7:51</p>
-          </div>
-          <div class="arrow">
-            <p>→</p>
-          </div>
-          <div class="arrive">
-            <p>8:10</p>
-          </div>
-        </div>
-
-        <div class="waiting">
-          <p>21min - ( 5% waiting )</p>
-        </div>
-      </div>
-
-      <div class="progress">
-        <div class="iwade"></div>
-        <div class="wakayama"></div>
-        <div class="miyamae"></div>
-      </div>
-    </div>
-    
-    <!-- 1個目 -->
+    <!-- 2個目 -->
     <div class="train-001">
       <div class="information">
         <div class="time">
@@ -105,7 +79,7 @@
       </div>
     </div>
     
-    <!-- 1個目 -->
+    <!-- 3個目 -->
     <div class="train-001">
       <div class="information">
         <div class="time">
@@ -132,5 +106,33 @@
       </div>
     </div>
     
+    <!-- 4個目 -->
+    <div class="train-001">
+      <div class="information">
+        <div class="time">
+          <div class="leave">
+            <p>7:51</p>
+          </div>
+          <div class="arrow">
+            <p>→</p>
+          </div>
+          <div class="arrive">
+            <p>8:10</p>
+          </div>
+        </div>
+
+        <div class="waiting">
+          <p>21min - ( 5% waiting )</p>
+        </div>
+      </div>
+
+      <div class="progress">
+        <div class="iwade"></div>
+        <div class="wakayama"></div>
+        <div class="miyamae"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
   </body>
 </html>

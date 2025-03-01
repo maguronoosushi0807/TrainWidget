@@ -12,8 +12,8 @@ body{
   padding: 4.7rem;
 }
 
-/* header */
-.header{
+/* locations */
+.locations{
 
   font-weight: 300;
   font-size: 2.4rem;
@@ -31,7 +31,7 @@ body{
 }
 
 .information{
-  margin-right: 1rem;
+  margin-right: 1.6rem;
 }
 
 
