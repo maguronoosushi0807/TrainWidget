@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "*.toml": "bat",
-        "xstring": "cpp",
-        "string": "cpp",
-        "utility": "cpp",
-        "xutility": "cpp"
-    }
-}
