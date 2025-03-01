@@ -17,119 +17,122 @@
   </head>
   <body>
     <!-- ヘッダー -->
-    <div class="locations" id="locations">
+    <div class="locations">
       <!-- <button onclick="changeContent()"></button> -->
-      <h1 onclick="changeLocation()">Iwade to Miyamae</h1>
+      <h1 onclick="changeLocation()" id="locations">Iwade to Miyamae</h1>
     </div>
 
 
 
-    <!-- 1個目 -->
-    <div class="train-001">
-      <div class="information">
-        <div class="time">
-          <div class="leave">
-            <p id="item1">7:51</p>
+    <div onclick="update()">
+
+      <!-- 1個目 -->
+      <div class="train">
+        <div class="information">
+          <div class="time">
+            <div class="leave">
+              <p id="leave-1">7:51</p>
+            </div>
+            <div class="arrow">
+              <p>→</p>
+            </div>
+            <div class="arrive">
+              <p id="arrive-1">8:10</p>
+            </div>
           </div>
-          <div class="arrow">
-            <p>→</p>
-          </div>
-          <div class="arrive">
-            <p>8:10</p>
+
+          <div class="waiting">
+            <p id="waiting-1">21min - ( 5% waiting )</p>
           </div>
         </div>
 
-        <div class="waiting">
-          <p>21min - ( 5% waiting )</p>
-        </div>
-      </div>
-
-      <div class="progress">
-        <div class="iwade"></div>
-        <div class="wakayama"></div>
-        <div class="miyamae"></div>
-      </div>
-    </div>
-
-    
-    <!-- 2個目 -->
-    <div class="train-001">
-      <div class="information">
-        <div class="time">
-          <div class="leave">
-            <p>7:51</p>
-          </div>
-          <div class="arrow">
-            <p>→</p>
-          </div>
-          <div class="arrive">
-            <p>8:10</p>
-          </div>
-        </div>
-
-        <div class="waiting">
-          <p>21min - ( 5% waiting )</p>
+        <div class="progress">
+          <div class="iwade" id="iwade-1"></div>
+          <div class="wakayama" id="wakayama-1"></div>
+          <div class="miyamae" id="miyamae-1"></div>
         </div>
       </div>
 
-      <div class="progress">
-        <div class="iwade"></div>
-        <div class="wakayama"></div>
-        <div class="miyamae"></div>
-      </div>
-    </div>
-    
-    <!-- 3個目 -->
-    <div class="train-001">
-      <div class="information">
-        <div class="time">
-          <div class="leave">
-            <p>7:51</p>
+      
+      <!-- 2個目 -->
+      <div class="train">
+        <div class="information">
+          <div class="time">
+            <div class="leave">
+              <p id="leave-2">7:51</p>
+            </div>
+            <div class="arrow">
+              <p>→</p>
+            </div>
+            <div class="arrive">
+              <p id="arrive-2">8:10</p>
+            </div>
           </div>
-          <div class="arrow">
-            <p>→</p>
-          </div>
-          <div class="arrive">
-            <p>8:10</p>
+
+          <div class="waiting">
+            <p id="waiting-2">21min - ( 5% waiting )</p>
           </div>
         </div>
 
-        <div class="waiting">
-          <p>21min - ( 5% waiting )</p>
+        <div class="progress">
+          <div class="iwade" id="iwade-2"></div>
+          <div class="wakayama" id="wakayama-2"></div>
+          <div class="miyamae" id="miyamae-2"></div>
         </div>
       </div>
+      
+      <!-- 3個目 -->
+      <div class="train">
+        <div class="information">
+          <div class="time">
+            <div class="leave">
+              <p id="leave-3">7:51</p>
+            </div>
+            <div class="arrow">
+              <p>→</p>
+            </div>
+            <div class="arrive">
+              <p id="arrive-3">8:10</p>
+            </div>
+          </div>
 
-      <div class="progress">
-        <div class="iwade"></div>
-        <div class="wakayama"></div>
-        <div class="miyamae"></div>
-      </div>
-    </div>
-    
-    <!-- 4個目 -->
-    <div class="train-001">
-      <div class="information">
-        <div class="time">
-          <div class="leave">
-            <p>7:51</p>
-          </div>
-          <div class="arrow">
-            <p>→</p>
-          </div>
-          <div class="arrive">
-            <p>8:10</p>
+          <div class="waiting">
+            <p id="waiting-3">21min - ( 5% waiting )</p>
           </div>
         </div>
 
-        <div class="waiting">
-          <p>21min - ( 5% waiting )</p>
+        <div class="progress">
+          <div class="iwade" id="iwade-3"></div>
+          <div class="wakayama" id="wakayama-3"></div>
+          <div class="miyamae" id="miyamae-3"></div>
         </div>
       </div>
+      
+      <!-- 4個目 -->
+      <div class="train">
+        <div class="information">
+          <div class="time">
+            <div class="leave">
+              <p id="leave-4">7:51</p>
+            </div>
+            <div class="arrow">
+              <p>→</p>
+            </div>
+            <div class="arrive">
+              <p id="arrive-4">8:10</p>
+            </div>
+          </div>
 
-      <div class="progress">
-        <div class="iwade"></div>
-        <div class="wakayama"></div>
-        <div class="miyamae"></div>
+          <div class="waiting">
+            <p id="waiting-4">21min - ( 5% waiting )</p>
+          </div>
+        </div>
+
+        <div class="progress">
+          <div class="iwade" id="iwade-4"></div>
+          <div class="wakayama" id="wakayama-4"></div>
+          <div class="miyamae" id="miyamae-4"></div>
+        </div>
       </div>
     </div>
 
