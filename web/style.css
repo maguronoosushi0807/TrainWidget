@@ -14,33 +14,38 @@ body{
 
 /* header */
 .header{
+
   font-weight: 300;
   font-size: 2.4rem;
 
   color: #f2f0f1;
 
-  padding-bottom: 2.4rem;
+  padding-bottom: 4rem;
 }
 
 /* list */
 .train-001{
+  display: flex;
   color: #f2f0f1;
-  padding-bottom: 4.2rem;
+  padding-bottom: 3.2rem;
 }
 
+.information{
+  margin-right: 1rem;
+}
+
+
 .time{
+  display: flex;
   font-weight: 600;
   font-size: 3.2rem;
 }
 
 .leave{
   color: #FF8E1F;
-  float: left;
 }
 
 .arrow{
-  float: left;
-  
   font-weight: 100;
   
   margin-left: 1.2rem;
@@ -51,15 +56,22 @@ body{
   font-weight: 300;
   font-size: 1.6rem;
   padding-top: 0.2rem;
-  float: left;
 }
 
+
 .progress{
+  flex: 1;
+
+  display: flex;
+  align-content: space-between;
+  margin: auto ;
+  gap: 0.4rem;
+  background-color: #0d0d0d;
 }
 
 .iwade{
-  width: 10rem;
-  height: 1rem;
+  flex: 15;
+  height: 0.5rem;
   border-radius: 1rem;
   
   float: left;
@@ -68,8 +80,8 @@ body{
 }
 
 .wakayama{
-  width: 10rem;
-  height: 1rem;
+  flex: 1;
+  height: 0.5rem;
   border-radius: 1rem;
 
   float: left;  
@@ -78,25 +90,11 @@ body{
 }
 
 .miyamae{
-  width: 10rem;
-  height: 1rem;
+  flex: 3;
+  height: 0.5rem;
   border-radius: 1rem;
 
   float: left;
 
   background-color: #00a6b4;
-}
-
-
-.test{
-  /* display: flex; */
-  /* justify-content: space-between; */
-  font-size: 2rem;
-  color: #ffffff;
-}
-
-ul{
-  display: flex;
-  align-items: center;
-  gap:1rem;
 }
