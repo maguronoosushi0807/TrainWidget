@@ -12,16 +12,18 @@ async function load(){
   const WtI_file = await fetch('asset/WtI.csv');
   const MtW_file = await fetch('asset/MtW.csv');
   const WtM_file = await fetch('asset/WtM.csv');
-
+  
   const ItW_text = await ItW_file.text();
   const WtI_text = await WtI_file.text();
   const MtW_text = await MtW_file.text();
   const WtM_text = await WtM_file.text();
 
-  ItW.push(...ItW_text.trim().split("\n").map(row => row.split(",")));
-  WtI.push(...WtI_text.trim().split("\n").map(row => row.split(",")));
-  MtW.push(...MtW_text.trim().split("\n").map(row => row.split(",")));
-  WtM.push(...WtM_text.trim().split("\n").map(row => row.split(",")));
+  ItW = ItW_text.split(/,|\n/);
+  // WtI.push(...WtI_text.trim().split("\n").map(row => row.split(",")));
+  // MtW.push(...MtW_text.trim().split("\n").map(row => row.split(",")));
+  // WtM.push(...WtM_text.trim().split("\n").map(row => row.split(",")));
+
+  document.getElementById("test").textContent = ItW.join(" - ");
 }
 
 function changeLocation(){
