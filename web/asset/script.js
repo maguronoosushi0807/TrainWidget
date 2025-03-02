@@ -1,3 +1,6 @@
+const white  = "#F2F0F1";
+const orange = "#FF831F";
+
 let loc_now  = "Iwade";
 let loc_dest = "Miyamae";
 
@@ -7,6 +10,7 @@ let MtW = new Array();
 let WtM = new Array();
 
 
+// 読み出し
 async function load(){
   const ItW_file = await fetch("asset/ItW.csv");
   const WtI_file = await fetch('asset/WtI.csv');
@@ -18,12 +22,71 @@ async function load(){
   const MtW_text = await MtW_file.text();
   const WtM_text = await WtM_file.text();
 
-  ItW = ItW_text.split(/,|\n/);
-  // WtI.push(...WtI_text.trim().split("\n").map(row => row.split(",")));
-  // MtW.push(...MtW_text.trim().split("\n").map(row => row.split(",")));
-  // WtM.push(...WtM_text.trim().split("\n").map(row => row.split(",")));
 
-  document.getElementById("test").textContent = ItW.join(" - ");
+  const ItW_split = ItW_text.split(/,|\n/);
+  ItW_split.forEach(function(value, index){
+    let is_rapid = false;
+
+    if(value.startsWith('_')){
+      is_rapid = true;
+      value = value.slice(1);
+    }
+
+    let hour = Number(value.substring(0,2));
+    let min  = Number(value.substring(2,4));
+
+    ItW.push(hour*60+min, is_rapid)
+  })
+
+
+  const WtI_split = WtI_text.split(/,|\n/);
+  WtI_split.forEach(function(value, index){
+    let is_rapid = false;
+
+    if(value.startsWith('_')){
+      is_rapid = true;
+      value = value.slice(1);
+    }
+
+    let hour = Number(value.substring(0,2));
+    let min  = Number(value.substring(2,4));
+
+    WtI.push(hour*60+min, is_rapid)
+  })
+
+
+  const MtW_split = MtW_text.split(/,|\n/);
+  MtW_split.forEach(function(value, index){
+    let is_rapid = false;
+
+    if(value.startsWith('_')){
+      is_rapid = true;
+      value = value.slice(1);
+    }
+
+    let hour = Number(value.substring(0,2));
+    let min  = Number(value.substring(2,4));
+
+    MtW.push(hour*60+min, is_rapid)
+  })
+
+
+  const WtM_split = WtM_text.split(/,|\n/);
+  WtM_split.forEach(function(value, index){
+    let is_rapid = false;
+
+    if(value.startsWith('_')){
+      is_rapid = true;
+      value = value.slice(1);
+    }
+
+    let hour = Number(value.substring(0,2));
+    let min  = Number(value.substring(2,4));
+
+    WtM.push(hour*60+min, is_rapid)
+  })
+
+  // document.getElementById("test").textContent = WtI.join(" ");
 }
 
 function changeLocation(){
@@ -32,10 +95,15 @@ function changeLocation(){
 }
 
 function update(){
-  document.getElementById("leave-1").  textContent = "8:10";
+  let time = new Date();
+  let hour = time.getHours();
+  let min = time.getMinutes();
+
+
+  document.getElementById("leave-1").  textContent = hour+":"+min
   document.getElementById("arrive-1"). textContent = "9:10";
   document.getElementById("waiting-1").textContent = "9:10";
-  document.getElementById("leave-1"). style.color = "#FF831F";
+  document.getElementById("leave-1"). style.color = white;
   document.getElementById("arrive-1").style.color = "#FF831F";
   document.getElementById("iwade-1").   style.flex = 1;
   document.getElementById("wakayama-1").style.flex = 1;
